@@ -1,0 +1,40 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+
+    <div class="article-details">
+
+        <!-- Image -->
+        {% if image %}
+            <img src="{{ image }}" alt="{{ title }}" style="max-width: 100%; margin-bottom: 20px;" />
+        {% endif %}
+
+        <!-- Title -->
+        <h1>{{ title }}</h1>
+
+        <!-- Author -->
+        <h3 style="color: red;">Created By: {{ author }}</h3>
+
+        <!-- Status -->
+        <p>
+            <strong>Status:</strong>
+            {% if status == 'Available' %}
+                <span style="color: green;">Available</span>
+            {% elif status == 'Issued' %}
+                <span style="color: orange;">Issued</span>
+            {% endif %}
+        </p>
+
+        <!-- Publisher and ISBN -->
+        <p><strong>Publisher:</strong> {{ publisher }}</p>
+        <p><strong>ISBN:</strong> {{ isbn }}</p>
+
+        <!-- Description / Text -->
+        <div class="article-text" style="margin-top: 20px;">
+            {{ text_editor_afur | safe }}
+        </div>
+
+    </div>
+
+{% endblock %}
+ 
